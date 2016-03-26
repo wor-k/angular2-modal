@@ -45,6 +45,16 @@ export class DemoPage {
     /* tslint:enable */
 
     openDialog(type: string) {
+        this.modal.alert()
+            .modalConfig(new ModalConfig('sm', false, 27))
+            .title('Hello')
+            .content('World')
+            .ok('EXIT')
+            .open()
+            .then((mdi: ModalDialogInstance) => {
+                mdi.result.then(() => alert('ok'));
+            });
+        return;
         let dialog:  Promise<ModalDialogInstance>;
         let component = (type === 'customWindow') ? AdditionCalculateWindow : YesNoModal;
         let bindings = Injector.resolve([

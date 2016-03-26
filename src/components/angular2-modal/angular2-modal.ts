@@ -5,5 +5,8 @@ export * from './components/modalBackdrop';
 export * from './components/bootstrapModalContainer';
 export * from './providers/Modal';
 
+export * from './framework/ConfigBuilder';
+export * from './scenarios/scenarios';
+
 export * from './commonModals/yesNoModal';
 export * from './commonModals/okOnlyModal';
