@@ -15,7 +15,7 @@ import {ModalConfig} from '../models/ModalConfig';
 import {ModalDialogInstance} from '../models/ModalDialogInstance';
 import {ModalBackdrop} from '../components/modalBackdrop';
 import {BootstrapModalContainer} from '../components/bootstrapModalContainer';
-import {Alert} from '../scenarios/scenarios';
+import {OneButtonPreset, TwoButtonPreset} from '../presets';
 
 const _stack = new ModalInstanceStack();
 
@@ -39,8 +39,16 @@ export class Modal {
         });
     }
 
-    alert(): Alert {
-        return new Alert(this);
+    alert(): OneButtonPreset {
+        return new OneButtonPreset(this, <any>{ isBlocking: false });
+    }
+
+    prompt(): OneButtonPreset {
+        return new OneButtonPreset(this, <any>{ isBlocking: true, keyboard: null });
+    }
+
+    confirm(): TwoButtonPreset {
+        return new TwoButtonPreset(this, <any>{ isBlocking: true, keyboard: null });
     }
 
     /**
