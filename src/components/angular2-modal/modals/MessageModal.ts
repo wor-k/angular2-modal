@@ -10,7 +10,7 @@ import {ModalFooter, FooterButtonClickEvent} from '../components/modalFooter';
 export interface ModalButtonConfig {
     cssClass: string;
     caption: string;
-    onClick: (modalComponent: any, $event?) => void;
+    onClick: (modalComponent: any, $event?: MouseEvent) => void;
 }
 
 /**

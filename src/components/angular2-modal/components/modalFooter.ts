@@ -37,7 +37,7 @@ export class ModalFooter {
 
     constructor() {}
 
-    onClick(btn, $event) {
+    onClick(btn: any, $event: MouseEvent) {
         this.onButtonClick.emit({btn, $event});
     }
 }

@@ -56,8 +56,7 @@ export class DemoPage {
                 elementRef: this.mySampleElement,
                 anchorName: 'myModal'
             });
-        }
-        else {
+        } else {
             dialog = preset.open();
         }
 
@@ -66,10 +65,12 @@ export class DemoPage {
 
 
     openCustomModal() {
-        let dialog = this.modal.open(
-            <any>AdditionCalculateWindow,
-            Injector.resolve([provide(ICustomModal, {useValue: new AdditionCalculateWindowData(2, 3)})]),
-            new ModalConfig("lg", true, 27)
+        let resolvedBindings = Injector.resolve([provide(ICustomModal, {
+                                                useValue: new AdditionCalculateWindowData(2, 3)})]),
+            dialog = this.modal.open(
+                <any>AdditionCalculateWindow,
+                resolvedBindings,
+                new ModalConfig('lg', true, 27)
         );
        this.processDialog(dialog);
     }

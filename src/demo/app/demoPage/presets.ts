@@ -66,7 +66,7 @@ export function cascading(modal: Modal) {
     );
 
     return {
-        open: ()=> {
+        open: () => {
             let ret = presets.shift().open();
             while (presets.length > 0) presets.shift().open();
             return ret;

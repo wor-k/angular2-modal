@@ -11,7 +11,8 @@ function createBindings(config: OneButtonPresetData): ResolvedBinding[] {
         {
             cssClass: config.okBtnClass,
             caption: config.okBtn,
-            onClick: (modalComponent: MessageModal, $event) => modalComponent.dialog.close(true)
+            onClick: (modalComponent: MessageModal, $event?: MouseEvent) =>
+                modalComponent.dialog.close(true)
         }
     ];
 

@@ -8,13 +8,13 @@ export function extend<T>(m1: any, m2: any): T {
     var m: T = <T>{};
     for (var attr in m1) {
         if (m1.hasOwnProperty(attr)) {
-            m[attr] = m1[attr];
+            (<any>m)[attr] = (<any>m1)[attr];
         }
     }
 
     for (var attr in m2) {
         if (m2.hasOwnProperty(attr)) {
-            m[attr] = m2[attr];
+            (<any>m)[attr] = (<any>m2)[attr];
         }
     }
 

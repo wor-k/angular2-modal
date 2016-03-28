@@ -1,13 +1,13 @@
 import { Component } from 'angular2/core';
 import {Modal, TwoButtonPresetData, TwoButtonPreset} from 'angular2-modal';
+let html = require('./customizeWizard.tpl.html');
 
 
 @Component({
     selector: 'customize-wizard',
     directives: [],
     providers: [Modal],
-    styles: [ require('./customizeWizard.css') ],
-    template: require('./customizeWizard.tpl.html')
+    template: html
 })
 export class CustomizeWizard {
     type: 'alert' | 'prompt' | 'confirm' = 'alert';
@@ -26,10 +26,10 @@ export class CustomizeWizard {
     };
 
     constructor(private modal: Modal) {}
-    
+
     createModal() {
         let p = this.preset;
-        
+
         let fluent: TwoButtonPreset = <any>this.modal[this.type]();
         for (let key in p) {
             let value = p[key];
@@ -47,11 +47,10 @@ export class CustomizeWizard {
         for (let key in p) {
             let value = p[key];
             if (value === null || value === '') continue;
-            code += `    .${key}(${typeof value === 'string' ? `'${value}'` : value})\n`
-        }
+            code += `    .${key}(${typeof value === 'string' ? `'${value}'` : value})\n`;
+    }
 
         code += '    .open();';
         return code;
     }
-
 }

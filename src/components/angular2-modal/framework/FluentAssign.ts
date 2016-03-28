@@ -85,7 +85,7 @@ export class FluentAssignFactory<T> {
     setMethod(name: string, defaultValue: any = undefined): FluentAssignFactory<T> {
         setAssignMethod(this._fluentAssign, name);
         if (defaultValue !== undefined) {
-            this._fluentAssign[name](defaultValue);
+            (<any>this._fluentAssign)[name](defaultValue);
         }
         return this;
     }
@@ -121,7 +121,7 @@ export class FluentAssign<T> {
     constructor(defaultValues: T = undefined, initialSetters: string[] = undefined) {
         if (defaultValues) {
             Object.getOwnPropertyNames(defaultValues)
-                .forEach(name => this[privateKey(name)] = defaultValues[name]);
+                .forEach(name => (<any>this)[privateKey(name)] = (<any>defaultValues)[name]);
         }
 
         if (Array.isArray(initialSetters)) {
@@ -156,7 +156,7 @@ export class FluentAssign<T> {
     toJSON(): T {
         return getAssignedPropertyNames(this)
             .reduce((obj: T, name: string) => {
-                obj[name] = this[privateKey(name)];
+                (<any>obj)[name] = (<any>this)[privateKey(name)];
                 return obj;
             }, <T><any>{});
     }
