@@ -1,2 +1,993 @@
-webpackJsonp([3],{0:function(t,e,o){function n(t){for(var o in t)e.hasOwnProperty(o)||(e[o]=t[o])}n(o(21)),n(o(28)),n(o(9)),n(o(69)),n(o(68)),n(o(110)),n(o(109)),n(o(265))},9:function(t,e,o){var n=o(6),i=function(){function t(t){this.config=t,this._resultDefered=n.PromiseWrapper.completer()}return Object.defineProperty(t.prototype,"backdropRef",{set:function(t){this._backdropRef=t},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"bootstrapRef",{set:function(t){this._bootstrapRef=t},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"result",{get:function(){return this._resultDefered.promise},enumerable:!0,configurable:!0}),t.prototype.dispose=function(){this._bootstrapRef.dispose(),this._backdropRef.dispose(),this.contentRef.dispose()},t.prototype.close=function(t){void 0===t&&(t=null),this.contentRef.instance.beforeClose&&this.contentRef.instance.beforeClose()===!0||(this.dispose(),this._resultDefered.resolve(t))},t.prototype.dismiss=function(){this.contentRef.instance.beforeDismiss&&this.contentRef.instance.beforeDismiss()===!0||(this.dispose(),this._resultDefered.reject())},t}();e.ModalDialogInstance=i},21:function(t,e){var o=function(){function t(){}return t}();e.ICustomModal=o},28:function(t,e,o){var n,i=this&&this.__decorate||function(t,e,o,n){var i,a=arguments.length,c=3>a?e:null===n?n=Object.getOwnPropertyDescriptor(e,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)c=Reflect.decorate(t,e,o,n);else for(var s=t.length-1;s>=0;s--)(i=t[s])&&(c=(3>a?i(c):a>3?i(e,o,c):i(e,o))||c);return a>3&&c&&Object.defineProperty(e,o,c),c},a=this&&this.__metadata||function(t,e){return"object"==typeof Reflect&&"function"==typeof Reflect.metadata?Reflect.metadata(t,e):void 0},c=o(4),s=function(){function t(t,e,o){void 0===t&&(t=null),void 0===e&&(e=null),void 0===o&&(o=void 0),this.size=t,this.isBlocking=e,this.keyboard=o}return t.makeValid=function(t,e){return e=e?e:n,t.size||(t.size=e.size),t.isBlocking!==!1&&(t.isBlocking=!0),null!==t.keyboard&&(Array.isArray(t.keyboard)?t.keyboard=0===t.keyboard.length?e.keyboard:t.keyboard:isNaN(t.keyboard)?t.keyboard=e.keyboard:t.keyboard=[t.keyboard]),t},t=i([c.Injectable(),a("design:paramtypes",[String,Boolean,Object])],t)}();e.ModalConfig=s,n=new s("lg",!0,[27])},68:function(t,e,o){var n=this&&this.__decorate||function(t,e,o,n){var i,a=arguments.length,c=3>a?e:null===n?n=Object.getOwnPropertyDescriptor(e,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)c=Reflect.decorate(t,e,o,n);else for(var s=t.length-1;s>=0;s--)(i=t[s])&&(c=(3>a?i(c):a>3?i(e,o,c):i(e,o))||c);return a>3&&c&&Object.defineProperty(e,o,c),c},i=this&&this.__metadata||function(t,e){return"object"==typeof Reflect&&"function"==typeof Reflect.metadata?Reflect.metadata(t,e):void 0},a=o(4),c=o(9),s=function(){function t(t){this.dialogInstance=t,t.inElement?this.position="absolute":this.position=null}return t.prototype.onClick=function(){!this.dialogInstance.config.isBlocking&&this.dialogInstance.dismiss()},t.prototype.documentKeypress=function(t){this.dialogInstance.config.keyboard&&this.dialogInstance.config.keyboard.indexOf(t.keyCode)>-1&&this.dialogInstance.dismiss()},t=n([a.Component({selector:"bootstrap-modal",host:{tabindex:"0",role:"dialog","class":"in modal",style:"display: block","[style.position]":"position","(body:keydown)":"documentKeypress($event)","(click)":"onClick()"},template:'<div class="modal-dialog"\n         [class.modal-lg]="dialogInstance.config.size == \'lg\'"\n         [class.modal-sm]="dialogInstance.config.size == \'sm\'">\n         <div class="modal-content" style="display: block">\n            <div style="display: none" #modalDialog></div>\n         </div>\n    </div>'}),i("design:paramtypes",[c.ModalDialogInstance])],t)}();e.BootstrapModalContainer=s},69:function(t,e,o){var n=this&&this.__decorate||function(t,e,o,n){var i,a=arguments.length,c=3>a?e:null===n?n=Object.getOwnPropertyDescriptor(e,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)c=Reflect.decorate(t,e,o,n);else for(var s=t.length-1;s>=0;s--)(i=t[s])&&(c=(3>a?i(c):a>3?i(e,o,c):i(e,o))||c);return a>3&&c&&Object.defineProperty(e,o,c),c},i=this&&this.__metadata||function(t,e){return"object"==typeof Reflect&&"function"==typeof Reflect.metadata?Reflect.metadata(t,e):void 0},a=o(4),c=o(9),s=function(){function t(t){t.inElement?(this.position="absolute",this.height="100%",this.width="100%",this.top=this.left=this.right=this.bottom="0"):(this.position=this.width=this.height=null,this.top=this.left=this.right=this.bottom=null)}return t=n([a.Component({selector:"modal-backdrop",host:{"[style.position]":"position","[style.height]":"height","[style.width]":"width","[style.top]":"top","[style.left]":"left","[style.right]":"right","[style.bottom]":"bottom"},template:'<div [style.position]="position" class="in modal-backdrop" #modalBackdrop></div>'}),i("design:paramtypes",[c.ModalDialogInstance])],t)}();e.ModalBackdrop=s},109:function(t,e,o){var n=this&&this.__decorate||function(t,e,o,n){var i,a=arguments.length,c=3>a?e:null===n?n=Object.getOwnPropertyDescriptor(e,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)c=Reflect.decorate(t,e,o,n);else for(var s=t.length-1;s>=0;s--)(i=t[s])&&(c=(3>a?i(c):a>3?i(e,o,c):i(e,o))||c);return a>3&&c&&Object.defineProperty(e,o,c),c},i=this&&this.__metadata||function(t,e){return"object"==typeof Reflect&&"function"==typeof Reflect.metadata?Reflect.metadata(t,e):void 0},a=o(4),c=o(46),s=o(21),r=o(9),l=function(){function t(t,e,o,n,i){void 0===t&&(t="Hello World Title"),void 0===e&&(e="Hello World Body!"),void 0===o&&(o=!1),void 0===n&&(n="YES"),void 0===i&&(i="NO"),this.title=t,this.body=e,this.hideNo=o,this.yesText=n,this.noText=i}return t}();e.YesNoModalContent=l;var d=function(){function t(t,e){this.dialog=t,this.context=e}return t.prototype.ok=function(t){t.stopPropagation(),this.dialog.close(!0)},t.prototype.cancel=function(){this.dialog.dismiss()},t=n([a.Component({selector:"modal-content",directives:[c.NgIf],template:'<div class="modal-header">\n        <h3 class="modal-title">{{context.title}}</h3>\n        </div>\n        <div class="modal-body">{{context.body}}</div>\n        <div class="modal-footer">\n            <button class="btn btn-primary" (click)="ok($event)">{{context.yesText}}</button>\n            <button *ngIf="!context.hideNo" class="btn btn-warning" (click)="cancel()">{{context.noText}}</button>\n        </div>'}),i("design:paramtypes",[r.ModalDialogInstance,s.ICustomModal])],t)}();e.YesNoModal=d},110:function(t,e,o){var n,i=this&&this.__decorate||function(t,e,o,n){var i,a=arguments.length,c=3>a?e:null===n?n=Object.getOwnPropertyDescriptor(e,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)c=Reflect.decorate(t,e,o,n);else for(var s=t.length-1;s>=0;s--)(i=t[s])&&(c=(3>a?i(c):a>3?i(e,o,c):i(e,o))||c);return a>3&&c&&Object.defineProperty(e,o,c),c},a=this&&this.__metadata||function(t,e){return"object"==typeof Reflect&&"function"==typeof Reflect.metadata?Reflect.metadata(t,e):void 0},c=this&&this.__param||function(t,e){return function(o,n){e(o,n,t)}},s=o(4),r=o(28),l=o(9),d=o(69),f=o(68),p=function(){function t(t,e,o){this.componentLoader=t,this.appRef=e,n=o?r.ModalConfig.makeValid(o):new r.ModalConfig}return t.prototype.createBackdrop=function(t,e,o){return o?this.componentLoader.loadIntoLocation(d.ModalBackdrop,t,o,e):this.componentLoader.loadNextToLocation(d.ModalBackdrop,t,e)},t.prototype.open=function(t,e,o){var n=this.appRef._rootComponents[0].location;return this.openInside(t,n,null,e,o)},t.prototype.openInside=function(t,e,o,i,a){var c=this;a=a?r.ModalConfig.makeValid(a,n):n;var d=new l.ModalDialogInstance(a);d.inElement=!!o;var p=s.Injector.resolve([s.provide(l.ModalDialogInstance,{useValue:d})]);return this.createBackdrop(e,p,o).then(function(e){d.backdropRef=e;var o=s.Injector.resolve([s.provide(l.ModalDialogInstance,{useValue:d})]).concat(i);return c.componentLoader.loadIntoLocation(f.BootstrapModalContainer,e.location,"modalBackdrop",p).then(function(e){return d.bootstrapRef=e,c.componentLoader.loadIntoLocation(t,e.location,"modalDialog",o).then(function(t){return d.contentRef=t,d})})})},t=i([s.Injectable(),c(2,s.Optional()),a("design:paramtypes",[s.DynamicComponentLoader,s.ApplicationRef,r.ModalConfig])],t)}();e.Modal=p},265:function(t,e,o){var n=this&&this.__decorate||function(t,e,o,n){var i,a=arguments.length,c=3>a?e:null===n?n=Object.getOwnPropertyDescriptor(e,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)c=Reflect.decorate(t,e,o,n);else for(var s=t.length-1;s>=0;s--)(i=t[s])&&(c=(3>a?i(c):a>3?i(e,o,c):i(e,o))||c);return a>3&&c&&Object.defineProperty(e,o,c),c},i=this&&this.__metadata||function(t,e){return"object"==typeof Reflect&&"function"==typeof Reflect.metadata?Reflect.metadata(t,e):void 0},a=o(4),c=o(21),s=o(9),r=function(){function t(t,e,o){void 0===t&&(t="Hello World Title"),void 0===e&&(e="Hello World Body!"),void 0===o&&(o="OK"),this.title=t,this.body=e,this.okText=o}return t}();e.OKOnlyContent=r;var l=function(){function t(t,e){this.dialog=t,this.context=e}return t.prototype.ok=function(){this.dialog.close(!0)},t=n([a.Component({selector:"modal-content",template:'<div class="modal-header">\n        <h3 class="modal-title">{{context.title}}</h3>\n        </div>\n        <div class="modal-body">{{context.body}}</div>\n        <div class="modal-footer">\n            <button class="btn btn-primary" (click)="ok()">{{context.okText}}</button>\n        </div>'}),i("design:paramtypes",[s.ModalDialogInstance,c.ICustomModal])],t)}();e.OKOnlyModal=l}});
+webpackJsonp([0],{
+
+/***/ 0:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(1));
+
+
+/***/ },
+
+/***/ 1:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(2));
+
+
+/***/ },
+
+/***/ 2:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(3));
+	__export(__webpack_require__(4));
+	__export(__webpack_require__(117));
+	__export(__webpack_require__(118));
+	__export(__webpack_require__(119));
+	__export(__webpack_require__(128));
+	__export(__webpack_require__(120));
+	__export(__webpack_require__(125));
+	__export(__webpack_require__(127));
+	__export(__webpack_require__(123));
+	__export(__webpack_require__(132));
+	__export(__webpack_require__(182));
+
+
+/***/ },
+
+/***/ 3:
+/***/ function(module, exports) {
+
+	"use strict";
+	var ICustomModal = (function () {
+	    function ICustomModal() {
+	    }
+	    return ICustomModal;
+	}());
+	exports.ICustomModal = ICustomModal;
+
+
+/***/ },
+
+/***/ 4:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(5);
+	var _defaultConfig;
+	var ModalConfig = (function () {
+	    function ModalConfig(size, isBlocking, keyboard) {
+	        if (size === void 0) { size = null; }
+	        if (isBlocking === void 0) { isBlocking = null; }
+	        if (keyboard === void 0) { keyboard = undefined; }
+	        this.size = size;
+	        this.isBlocking = isBlocking;
+	        this.keyboard = keyboard;
+	    }
+	    ModalConfig.makeValid = function (config, defaultConfig) {
+	        defaultConfig = (defaultConfig) ? defaultConfig : _defaultConfig;
+	        if (!config.size)
+	            config.size = defaultConfig.size;
+	        if (config.isBlocking !== false)
+	            config.isBlocking = true;
+	        if (config.keyboard === null) {
+	            config.keyboard = [];
+	        }
+	        else if (typeof config.keyboard === 'number') {
+	            config.keyboard = [config.keyboard];
+	        }
+	        else if (!Array.isArray(config.keyboard)) {
+	            config.keyboard = defaultConfig.keyboard;
+	        }
+	        return config;
+	    };
+	    ModalConfig.prototype.supportsKey = function (keyCode) {
+	        return this.keyboard.indexOf(keyCode) > -1;
+	    };
+	    ModalConfig = __decorate([
+	        core_1.Injectable(), 
+	        __metadata('design:paramtypes', [String, Boolean, Object])
+	    ], ModalConfig);
+	    return ModalConfig;
+	}());
+	exports.ModalConfig = ModalConfig;
+	_defaultConfig = new ModalConfig('lg', true, [27]);
+
+
+/***/ },
+
+/***/ 117:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var async_1 = __webpack_require__(50);
+	var ModalDialogInstance = (function () {
+	    function ModalDialogInstance(config) {
+	        this.config = config;
+	        this._resultDefered = async_1.PromiseWrapper.completer();
+	    }
+	    Object.defineProperty(ModalDialogInstance.prototype, "backdropRef", {
+	        set: function (value) {
+	            this._backdropRef = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(ModalDialogInstance.prototype, "bootstrapRef", {
+	        set: function (value) {
+	            this._bootstrapRef = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(ModalDialogInstance.prototype, "result", {
+	        get: function () {
+	            return this._resultDefered.promise;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    ModalDialogInstance.prototype.close = function (result) {
+	        if (result === void 0) { result = null; }
+	        if (this.contentRef.instance.beforeClose &&
+	            this.contentRef.instance.beforeClose() === true)
+	            return;
+	        this.dispose();
+	        this._resultDefered.resolve(result);
+	    };
+	    ModalDialogInstance.prototype.dismiss = function () {
+	        if (this.contentRef.instance.beforeDismiss &&
+	            this.contentRef.instance.beforeDismiss() === true)
+	            return;
+	        this.dispose();
+	        this._resultDefered.reject();
+	    };
+	    ModalDialogInstance.prototype.dispose = function () {
+	        this._bootstrapRef.dispose();
+	        this._backdropRef.dispose();
+	        this.contentRef.dispose();
+	    };
+	    return ModalDialogInstance;
+	}());
+	exports.ModalDialogInstance = ModalDialogInstance;
+
+
+/***/ },
+
+/***/ 118:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(5);
+	var ModalDialogInstance_1 = __webpack_require__(117);
+	var ModalBackdrop = (function () {
+	    function ModalBackdrop(dialog) {
+	        if (!dialog.inElement) {
+	            this.position = this.width = this.height = null;
+	            this.top = this.left = this.right = this.bottom = null;
+	        }
+	        else {
+	            this.position = 'absolute';
+	            this.height = '100%';
+	            this.width = '100%';
+	            this.top = this.left = this.right = this.bottom = '0';
+	        }
+	    }
+	    ModalBackdrop = __decorate([
+	        core_1.Component({
+	            selector: 'modal-backdrop',
+	            host: {
+	                '[style.position]': 'position',
+	                '[style.height]': 'height',
+	                '[style.width]': 'width',
+	                '[style.top]': 'top',
+	                '[style.left]': 'left',
+	                '[style.right]': 'right',
+	                '[style.bottom]': 'bottom'
+	            },
+	            template: '<div [style.position]="position" class="in modal-backdrop" #modalBackdrop></div>'
+	        }), 
+	        __metadata('design:paramtypes', [ModalDialogInstance_1.ModalDialogInstance])
+	    ], ModalBackdrop);
+	    return ModalBackdrop;
+	}());
+	exports.ModalBackdrop = ModalBackdrop;
+
+
+/***/ },
+
+/***/ 119:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(5);
+	var ModalDialogInstance_1 = __webpack_require__(117);
+	var Modal_1 = __webpack_require__(120);
+	var BootstrapModalContainer = (function () {
+	    function BootstrapModalContainer(dialogInstance, modal) {
+	        this.modal = modal;
+	        this.dialogInstance = dialogInstance;
+	        if (!dialogInstance.inElement) {
+	            this.position = null;
+	        }
+	        else {
+	            this.position = 'absolute';
+	        }
+	    }
+	    BootstrapModalContainer.prototype.onContainerClick = function ($event) {
+	        $event.stopPropagation();
+	    };
+	    BootstrapModalContainer.prototype.onClick = function () {
+	        return !this.dialogInstance.config.isBlocking && this.dialogInstance.dismiss();
+	    };
+	    BootstrapModalContainer.prototype.documentKeypress = function (event) {
+	        if (this.modal.stackPosition(this.dialogInstance) !== this.modal.stackLength - 1)
+	            return;
+	        if (this.dialogInstance.config.supportsKey(event.keyCode)) {
+	            this.dialogInstance.dismiss();
+	        }
+	    };
+	    BootstrapModalContainer = __decorate([
+	        core_1.Component({
+	            selector: 'bootstrap-modal',
+	            providers: [Modal_1.Modal],
+	            host: {
+	                'tabindex': '0',
+	                'role': 'dialog',
+	                'class': 'in modal',
+	                'style': 'display: block',
+	                '[style.position]': 'position',
+	                '(body:keydown)': 'documentKeypress($event)',
+	                '(click)': 'onClick()'
+	            },
+	            template: "<div class=\"modal-dialog\"\n         [class.modal-lg]=\"dialogInstance.config.size == 'lg'\"\n         [class.modal-sm]=\"dialogInstance.config.size == 'sm'\">\n         <div class=\"modal-content\" (click)=\"onContainerClick($event)\" style=\"display: block\">\n            <div style=\"display: none\" #modalDialog></div>\n         </div>\n    </div>"
+	        }), 
+	        __metadata('design:paramtypes', [ModalDialogInstance_1.ModalDialogInstance, Modal_1.Modal])
+	    ], BootstrapModalContainer);
+	    return BootstrapModalContainer;
+	}());
+	exports.BootstrapModalContainer = BootstrapModalContainer;
+
+
+/***/ },
+
+/***/ 120:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var __param = (this && this.__param) || function (paramIndex, decorator) {
+	    return function (target, key) { decorator(target, key, paramIndex); }
+	};
+	var core_1 = __webpack_require__(5);
+	var ModalInstanceStack_1 = __webpack_require__(121);
+	var ModalConfig_1 = __webpack_require__(4);
+	var ModalDialogInstance_1 = __webpack_require__(117);
+	var modalBackdrop_1 = __webpack_require__(118);
+	var bootstrapModalContainer_1 = __webpack_require__(119);
+	var presets_1 = __webpack_require__(123);
+	var _stack = new ModalInstanceStack_1.ModalInstanceStack();
+	var Modal = (function () {
+	    function Modal(componentLoader, appRef, defaultConfig) {
+	        this.componentLoader = componentLoader;
+	        this.appRef = appRef;
+	        Object.defineProperty(this, 'config', {
+	            configurable: false,
+	            enumerable: true,
+	            value: (defaultConfig) ? ModalConfig_1.ModalConfig.makeValid(defaultConfig) : new ModalConfig_1.ModalConfig(),
+	            writable: false
+	        });
+	    }
+	    Modal.prototype.alert = function () {
+	        return new presets_1.OneButtonPreset(this, { isBlocking: false });
+	    };
+	    Modal.prototype.prompt = function () {
+	        return new presets_1.OneButtonPreset(this, { isBlocking: true, keyboard: null });
+	    };
+	    Modal.prototype.confirm = function () {
+	        return new presets_1.TwoButtonPreset(this, { isBlocking: true, keyboard: null });
+	    };
+	    Modal.prototype.open = function (componentType, bindings, config) {
+	        var elementRef = this.appRef._rootComponents[0].location;
+	        return this.openInside(componentType, elementRef, null, bindings, config);
+	    };
+	    Modal.prototype.openInside = function (componentType, elementRef, anchorName, bindings, config) {
+	        var _this = this;
+	        config = (config) ? ModalConfig_1.ModalConfig.makeValid(config, this.config) : this.config;
+	        var dialog = new ModalDialogInstance_1.ModalDialogInstance(config);
+	        dialog.inElement = !!anchorName;
+	        var dialogBindings = core_1.Injector.resolve([core_1.provide(ModalDialogInstance_1.ModalDialogInstance, { useValue: dialog })]);
+	        return this.createBackdrop(elementRef, dialogBindings, anchorName)
+	            .then(function (backdropRef) {
+	            dialog.backdropRef = backdropRef;
+	            var modalDataBindings = core_1.Injector.resolve([core_1.provide(ModalDialogInstance_1.ModalDialogInstance, { useValue: dialog })]).concat(bindings);
+	            return _this.componentLoader.loadIntoLocation(bootstrapModalContainer_1.BootstrapModalContainer, backdropRef.location, 'modalBackdrop', dialogBindings)
+	                .then(function (bootstrapRef) {
+	                dialog.bootstrapRef = bootstrapRef;
+	                return _this.componentLoader.loadIntoLocation(componentType, bootstrapRef.location, 'modalDialog', modalDataBindings)
+	                    .then(function (contentRef) {
+	                    dialog.contentRef = contentRef;
+	                    _stack.pushManaged(dialog);
+	                    return dialog;
+	                });
+	            });
+	        });
+	    };
+	    Modal.prototype.stackPosition = function (mInstande) {
+	        return _stack.indexOf(mInstande);
+	    };
+	    Object.defineProperty(Modal.prototype, "stackLength", {
+	        get: function () {
+	            return _stack.length;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Modal.prototype.createBackdrop = function (elementRef, bindings, anchorName) {
+	        return (!anchorName) ?
+	            this.componentLoader.loadNextToLocation(modalBackdrop_1.ModalBackdrop, elementRef, bindings) :
+	            this.componentLoader.loadIntoLocation(modalBackdrop_1.ModalBackdrop, elementRef, anchorName, bindings);
+	    };
+	    Modal = __decorate([
+	        core_1.Injectable(),
+	        __param(2, core_1.Optional()), 
+	        __metadata('design:paramtypes', [core_1.DynamicComponentLoader, core_1.ApplicationRef, ModalConfig_1.ModalConfig])
+	    ], Modal);
+	    return Modal;
+	}());
+	exports.Modal = Modal;
+
+
+/***/ },
+
+/***/ 121:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var dom_adapter_1 = __webpack_require__(122);
+	var ModalInstanceStack = (function () {
+	    function ModalInstanceStack() {
+	        this._stack = [];
+	    }
+	    ModalInstanceStack.prototype.push = function (mInstance) {
+	        var idx = this._stack.indexOf(mInstance);
+	        if (idx === -1)
+	            this._stack.push(mInstance);
+	        if (this._stack.length === 1) {
+	            dom_adapter_1.DOM.addClass(dom_adapter_1.DOM.query('body'), 'modal-open');
+	        }
+	    };
+	    ModalInstanceStack.prototype.pushManaged = function (mInstance) {
+	        var _this = this;
+	        this.push(mInstance);
+	        mInstance.result
+	            .then(function () { return _this.remove(mInstance); })
+	            .catch(function () { return _this.remove(mInstance); });
+	    };
+	    ModalInstanceStack.prototype.pop = function () {
+	        this._stack.pop();
+	    };
+	    ModalInstanceStack.prototype.remove = function (mInstance) {
+	        var idx = this._stack.indexOf(mInstance);
+	        if (idx > -1)
+	            this._stack.splice(idx, 1);
+	        if (this._stack.length === 0) {
+	            dom_adapter_1.DOM.removeClass(dom_adapter_1.DOM.query('body'), 'modal-open');
+	        }
+	    };
+	    ModalInstanceStack.prototype.index = function (index) {
+	        return this._stack[index];
+	    };
+	    ModalInstanceStack.prototype.indexOf = function (mInstance) {
+	        return this._stack.indexOf(mInstance);
+	    };
+	    Object.defineProperty(ModalInstanceStack.prototype, "length", {
+	        get: function () {
+	            return this._stack.length;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    return ModalInstanceStack;
+	}());
+	exports.ModalInstanceStack = ModalInstanceStack;
+
+
+/***/ },
+
+/***/ 123:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(124));
+	__export(__webpack_require__(126));
+	var OneButtonPreset_1 = __webpack_require__(130);
+	exports.OneButtonPreset = OneButtonPreset_1.OneButtonPreset;
+	var TwoButtonPreset_1 = __webpack_require__(131);
+	exports.TwoButtonPreset = TwoButtonPreset_1.TwoButtonPreset;
+
+
+/***/ },
+
+/***/ 124:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var Modal_1 = __webpack_require__(120);
+	var ModalConfig_1 = __webpack_require__(4);
+	var FluentAssign_1 = __webpack_require__(125);
+	var ModalAwarePreset = (function (_super) {
+	    __extends(ModalAwarePreset, _super);
+	    function ModalAwarePreset(defaultValues, initialSetters) {
+	        if (defaultValues === void 0) { defaultValues = undefined; }
+	        if (initialSetters === void 0) { initialSetters = undefined; }
+	        _super.call(this, defaultValues, initialSetters);
+	        FluentAssign_1.setAssignMethod(this, 'modal', true);
+	        FluentAssign_1.setAssignMethod(this, 'component', true);
+	        FluentAssign_1.setAssignMethod(this, 'bindings', true);
+	        FluentAssign_1.setAssignMethod(this, 'size');
+	        FluentAssign_1.setAssignMethod(this, 'isBlocking');
+	        FluentAssign_1.setAssignMethod(this, 'keyboard');
+	    }
+	    ModalAwarePreset.prototype.open = function (inside) {
+	        var config = this.toJSON();
+	        if (!(config.modal instanceof Modal_1.Modal)) {
+	            return Promise.reject(new Error('Configuration Error: modal service not set.'));
+	        }
+	        if (typeof config.bindings !== 'function') {
+	            return Promise.reject(new Error('Configuration Error: bindings not set.'));
+	        }
+	        if (inside) {
+	            return config.modal.openInside(config.component, inside.elementRef, inside.anchorName, config.bindings(config), new ModalConfig_1.ModalConfig(config.size, config.isBlocking, config.keyboard));
+	        }
+	        else {
+	            return config.modal.open(config.component, config.bindings(config), new ModalConfig_1.ModalConfig(config.size, config.isBlocking, config.keyboard));
+	        }
+	    };
+	    return ModalAwarePreset;
+	}(FluentAssign_1.FluentAssign));
+	exports.ModalAwarePreset = ModalAwarePreset;
+
+
+/***/ },
+
+/***/ 125:
+/***/ function(module, exports) {
+
+	"use strict";
+	var PRIVATE_PREFIX = '$$';
+	var RESERVED_REGEX = /^(\$\$).*/;
+	function validateMethodName(name) {
+	    if (!name) {
+	        throw new Error("Illegal method name. Empty method name is not allowed");
+	    }
+	    else if (name in this) {
+	        throw new Error("A member name '" + name + "' already defined.");
+	    }
+	}
+	function getAssignedPropertyNames(subject) {
+	    return Object.getOwnPropertyNames(subject)
+	        .filter(function (name) { return RESERVED_REGEX.test(name); })
+	        .map(function (name) { return name.substr(2); });
+	}
+	function privateKey(name) {
+	    return PRIVATE_PREFIX + name;
+	}
+	function setAssignMethod(obj, propertyName, writeOnce) {
+	    if (writeOnce === void 0) { writeOnce = false; }
+	    validateMethodName.call(obj, propertyName);
+	    Object.defineProperty(obj, propertyName, {
+	        configurable: false,
+	        enumerable: false,
+	        writable: false,
+	        value: function (value) {
+	            var key = privateKey(propertyName);
+	            if (writeOnce && this.hasOwnProperty(key)) {
+	                throw new Error("Overriding config property '" + propertyName + "' is not allowed.");
+	            }
+	            this[key] = value;
+	            return this;
+	        }
+	    });
+	}
+	exports.setAssignMethod = setAssignMethod;
+	var FluentAssignFactory = (function () {
+	    function FluentAssignFactory(fluentAssign) {
+	        this._fluentAssign =
+	            fluentAssign instanceof FluentAssign ? fluentAssign : new FluentAssign();
+	    }
+	    FluentAssignFactory.prototype.setMethod = function (name, defaultValue) {
+	        if (defaultValue === void 0) { defaultValue = undefined; }
+	        setAssignMethod(this._fluentAssign, name);
+	        if (defaultValue !== undefined) {
+	            this._fluentAssign[name](defaultValue);
+	        }
+	        return this;
+	    };
+	    Object.defineProperty(FluentAssignFactory.prototype, "fluentAssign", {
+	        get: function () {
+	            return this._fluentAssign;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    return FluentAssignFactory;
+	}());
+	exports.FluentAssignFactory = FluentAssignFactory;
+	var FluentAssign = (function () {
+	    function FluentAssign(defaultValues, initialSetters) {
+	        var _this = this;
+	        if (defaultValues === void 0) { defaultValues = undefined; }
+	        if (initialSetters === void 0) { initialSetters = undefined; }
+	        if (defaultValues) {
+	            Object.getOwnPropertyNames(defaultValues)
+	                .forEach(function (name) { return _this[privateKey(name)] = defaultValues[name]; });
+	        }
+	        if (Array.isArray(initialSetters)) {
+	            initialSetters.forEach(function (name) { return setAssignMethod(_this, name); });
+	        }
+	    }
+	    FluentAssign.compose = function (defaultValues, initialSetters) {
+	        if (defaultValues === void 0) { defaultValues = undefined; }
+	        if (initialSetters === void 0) { initialSetters = undefined; }
+	        return FluentAssign.composeWith(new FluentAssign(defaultValues, initialSetters));
+	    };
+	    FluentAssign.composeWith = function (fluentAssign) {
+	        return new FluentAssignFactory(fluentAssign);
+	    };
+	    FluentAssign.prototype.toJSON = function () {
+	        var _this = this;
+	        return getAssignedPropertyNames(this)
+	            .reduce(function (obj, name) {
+	            obj[name] = _this[privateKey(name)];
+	            return obj;
+	        }, {});
+	    };
+	    return FluentAssign;
+	}());
+	exports.FluentAssign = FluentAssign;
+
+
+/***/ },
+
+/***/ 126:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var ModalAwarePreset_1 = __webpack_require__(124);
+	var MessageModal_1 = __webpack_require__(127);
+	var Utils_1 = __webpack_require__(129);
+	var DEFAULT_CONFIG_VALUES = {
+	    component: MessageModal_1.MessageModal,
+	    headerClass: 'modal-header',
+	    bodyClass: 'modal-body',
+	    footerClass: 'modal-footer'
+	};
+	var DEFAULT_INITIAL_SETTERS = [
+	    'headerClass',
+	    'title',
+	    'titleHtml',
+	    'body',
+	    'bodyClass',
+	    'footerClass'
+	];
+	var MessageModalPreset = (function (_super) {
+	    __extends(MessageModalPreset, _super);
+	    function MessageModalPreset(defaultValues, initialSetters) {
+	        if (defaultValues === void 0) { defaultValues = undefined; }
+	        if (initialSetters === void 0) { initialSetters = undefined; }
+	        _super.call(this, Utils_1.extend(DEFAULT_CONFIG_VALUES, defaultValues || {}), Utils_1.arrayUnion(DEFAULT_INITIAL_SETTERS, initialSetters || []));
+	    }
+	    return MessageModalPreset;
+	}(ModalAwarePreset_1.ModalAwarePreset));
+	exports.MessageModalPreset = MessageModalPreset;
+
+
+/***/ },
+
+/***/ 127:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(5);
+	var ModalDialogInstance_1 = __webpack_require__(117);
+	var modalFooter_1 = __webpack_require__(128);
+	var MessageModalContext = (function () {
+	    function MessageModalContext() {
+	    }
+	    return MessageModalContext;
+	}());
+	exports.MessageModalContext = MessageModalContext;
+	var MessageModal = (function () {
+	    function MessageModal(dialog, context) {
+	        this.dialog = dialog;
+	        this.context = context;
+	    }
+	    MessageModal.prototype.onFooterButtonClick = function ($event) {
+	        $event.btn.onClick(this, $event.$event);
+	    };
+	    Object.defineProperty(MessageModal.prototype, "titleHtml", {
+	        get: function () {
+	            return this.context.titleHtml ? 1 : 0;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    MessageModal = __decorate([
+	        core_1.Component({
+	            selector: 'modal-content',
+	            directives: [modalFooter_1.ModalFooter],
+	            template: "<div [ngClass]=\"context.headerClass\" [ngSwitch]=\"titleHtml\">\n        <div *ngSwitchWhen=\"1\" [innerHtml]=\"context.titleHtml\"></div>\n        <h3 *ngSwitchDefault class=\"modal-title\">{{context.title}}</h3>\n    </div>\n    <div [ngClass]=\"context.bodyClass\" [innerHtml]=\"context.body\"></div>\n    <modal-footer [footerClass]=\"context.footerClass\" \n                  [buttons]=\"context.buttons\"\n                  (onButtonClick)=\"onFooterButtonClick($event)\"></modal-footer>"
+	        }), 
+	        __metadata('design:paramtypes', [ModalDialogInstance_1.ModalDialogInstance, MessageModalContext])
+	    ], MessageModal);
+	    return MessageModal;
+	}());
+	exports.MessageModal = MessageModal;
+
+
+/***/ },
+
+/***/ 128:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(5);
+	var ModalFooter = (function () {
+	    function ModalFooter() {
+	        this.onButtonClick = new core_1.EventEmitter();
+	    }
+	    ModalFooter.prototype.onClick = function (btn, $event) {
+	        this.onButtonClick.emit({ btn: btn, $event: $event });
+	    };
+	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', String)
+	    ], ModalFooter.prototype, "footerClass", void 0);
+	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', Array)
+	    ], ModalFooter.prototype, "buttons", void 0);
+	    __decorate([
+	        core_1.Output(), 
+	        __metadata('design:type', Object)
+	    ], ModalFooter.prototype, "onButtonClick", void 0);
+	    ModalFooter = __decorate([
+	        core_1.Component({
+	            selector: 'modal-footer',
+	            template: "<div [ngClass]=\"footerClass\">\n    <button *ngFor=\"#btn of buttons;\"\n            [ngClass]=\"btn.cssClass\"\n            (click)=\"onClick(btn, $event)\">{{btn.caption}}</button>\n</div>"
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], ModalFooter);
+	    return ModalFooter;
+	}());
+	exports.ModalFooter = ModalFooter;
+
+
+/***/ },
+
+/***/ 129:
+/***/ function(module, exports) {
+
+	"use strict";
+	function extend(m1, m2) {
+	    var m = {};
+	    for (var attr in m1) {
+	        if (m1.hasOwnProperty(attr)) {
+	            m[attr] = m1[attr];
+	        }
+	    }
+	    for (var attr in m2) {
+	        if (m2.hasOwnProperty(attr)) {
+	            m[attr] = m2[attr];
+	        }
+	    }
+	    return m;
+	}
+	exports.extend = extend;
+	function arrayUnion(arr1, arr2) {
+	    return arr1
+	        .concat(arr2.filter(function (v) { return arr1.indexOf(v) === -1; }));
+	}
+	exports.arrayUnion = arrayUnion;
+
+
+/***/ },
+
+/***/ 130:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var core_1 = __webpack_require__(5);
+	var MessageModal_1 = __webpack_require__(127);
+	var MessageModalPreset_1 = __webpack_require__(126);
+	var Utils_1 = __webpack_require__(129);
+	function createBindings(config) {
+	    config.buttons = [
+	        {
+	            cssClass: config.okBtnClass,
+	            caption: config.okBtn,
+	            onClick: function (modalComponent, $event) {
+	                return modalComponent.dialog.close(true);
+	            }
+	        }
+	    ];
+	    return core_1.Injector.resolve([
+	        core_1.provide(MessageModal_1.MessageModalContext, { useValue: config })
+	    ]);
+	}
+	var OneButtonPreset = (function (_super) {
+	    __extends(OneButtonPreset, _super);
+	    function OneButtonPreset(modal, defaultValues) {
+	        if (defaultValues === void 0) { defaultValues = undefined; }
+	        _super.call(this, Utils_1.extend({
+	            modal: modal,
+	            bindings: createBindings,
+	            okBtn: 'OK',
+	            okBtnClass: 'btn btn-primary'
+	        }, defaultValues || {}), [
+	            'okBtn',
+	            'okBtnClass'
+	        ]);
+	    }
+	    return OneButtonPreset;
+	}(MessageModalPreset_1.MessageModalPreset));
+	exports.OneButtonPreset = OneButtonPreset;
+
+
+/***/ },
+
+/***/ 131:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var core_1 = __webpack_require__(5);
+	var Utils_1 = __webpack_require__(129);
+	var MessageModal_1 = __webpack_require__(127);
+	var MessageModalPreset_1 = __webpack_require__(126);
+	function createBindings(config) {
+	    config.buttons = [
+	        {
+	            cssClass: config.okBtnClass,
+	            caption: config.okBtn,
+	            onClick: function (modalComponent, $event) {
+	                return modalComponent.dialog.close(true);
+	            }
+	        },
+	        {
+	            cssClass: config.cancelBtnClass,
+	            caption: config.cancelBtn,
+	            onClick: function (modalComponent, $event) {
+	                return modalComponent.dialog.dismiss();
+	            }
+	        }
+	    ];
+	    return core_1.Injector.resolve([
+	        core_1.provide(MessageModal_1.MessageModalContext, { useValue: config })
+	    ]);
+	}
+	var TwoButtonPreset = (function (_super) {
+	    __extends(TwoButtonPreset, _super);
+	    function TwoButtonPreset(modal, defaultValues) {
+	        if (defaultValues === void 0) { defaultValues = undefined; }
+	        _super.call(this, Utils_1.extend({
+	            modal: modal,
+	            bindings: createBindings,
+	            okBtn: 'OK',
+	            okBtnClass: 'btn btn-primary',
+	            cancelBtn: 'Cancel',
+	            cancelBtnClass: 'btn btn-default'
+	        }, defaultValues || {}), [
+	            'okBtn',
+	            'okBtnClass',
+	            'cancelBtn',
+	            'cancelBtnClass'
+	        ]);
+	    }
+	    return TwoButtonPreset;
+	}(MessageModalPreset_1.MessageModalPreset));
+	exports.TwoButtonPreset = TwoButtonPreset;
+
+
+/***/ },
+
+/***/ 132:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(5);
+	var common_1 = __webpack_require__(133);
+	var ICustomModal_1 = __webpack_require__(3);
+	var ModalDialogInstance_1 = __webpack_require__(117);
+	var YesNoModalContent = (function () {
+	    function YesNoModalContent(title, body, hideNo, yesText, noText) {
+	        if (title === void 0) { title = 'Hello World Title'; }
+	        if (body === void 0) { body = 'Hello World Body!'; }
+	        if (hideNo === void 0) { hideNo = false; }
+	        if (yesText === void 0) { yesText = 'YES'; }
+	        if (noText === void 0) { noText = 'NO'; }
+	        this.title = title;
+	        this.body = body;
+	        this.hideNo = hideNo;
+	        this.yesText = yesText;
+	        this.noText = noText;
+	    }
+	    return YesNoModalContent;
+	}());
+	exports.YesNoModalContent = YesNoModalContent;
+	var YesNoModal = (function () {
+	    function YesNoModal(dialog, modelContentData) {
+	        this.dialog = dialog;
+	        this.context = modelContentData;
+	    }
+	    YesNoModal.prototype.ok = function ($event) {
+	        $event.stopPropagation();
+	        this.dialog.close(true);
+	    };
+	    YesNoModal.prototype.cancel = function () {
+	        this.dialog.dismiss();
+	    };
+	    YesNoModal = __decorate([
+	        core_1.Component({
+	            selector: 'modal-content',
+	            directives: [common_1.NgIf],
+	            template: "<div class=\"modal-header\">\n        <h3 class=\"modal-title\">{{context.title}}</h3>\n        </div>\n        <div class=\"modal-body\">{{context.body}}</div>\n        <div class=\"modal-footer\">\n            <button class=\"btn btn-primary\" (click)=\"ok($event)\">{{context.yesText}}</button>\n            <button *ngIf=\"!context.hideNo\" class=\"btn btn-warning\" (click)=\"cancel()\">{{context.noText}}</button>\n        </div>"
+	        }), 
+	        __metadata('design:paramtypes', [ModalDialogInstance_1.ModalDialogInstance, ICustomModal_1.ICustomModal])
+	    ], YesNoModal);
+	    return YesNoModal;
+	}());
+	exports.YesNoModal = YesNoModal;
+
+
+/***/ },
+
+/***/ 182:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(5);
+	var ICustomModal_1 = __webpack_require__(3);
+	var ModalDialogInstance_1 = __webpack_require__(117);
+	var OKOnlyContent = (function () {
+	    function OKOnlyContent(title, body, okText) {
+	        if (title === void 0) { title = 'Hello World Title'; }
+	        if (body === void 0) { body = 'Hello World Body!'; }
+	        if (okText === void 0) { okText = 'OK'; }
+	        this.title = title;
+	        this.body = body;
+	        this.okText = okText;
+	    }
+	    return OKOnlyContent;
+	}());
+	exports.OKOnlyContent = OKOnlyContent;
+	var OKOnlyModal = (function () {
+	    function OKOnlyModal(dialog, modelContentData) {
+	        this.dialog = dialog;
+	        this.context = modelContentData;
+	    }
+	    OKOnlyModal.prototype.ok = function () {
+	        this.dialog.close(true);
+	    };
+	    OKOnlyModal = __decorate([
+	        core_1.Component({
+	            selector: 'modal-content',
+	            template: "<div class=\"modal-header\">\n        <h3 class=\"modal-title\">{{context.title}}</h3>\n        </div>\n        <div class=\"modal-body\">{{context.body}}</div>\n        <div class=\"modal-footer\">\n            <button class=\"btn btn-primary\" (click)=\"ok()\">{{context.okText}}</button>\n        </div>"
+	        }), 
+	        __metadata('design:paramtypes', [ModalDialogInstance_1.ModalDialogInstance, ICustomModal_1.ICustomModal])
+	    ], OKOnlyModal);
+	    return OKOnlyModal;
+	}());
+	exports.OKOnlyModal = OKOnlyModal;
+
+
+/***/ }
+
+});
 //# sourceMappingURL=angular2-modal.map
