@@ -1,27 +1,54 @@
 {
   "name": "angular2-modal",
-  "version": "0.0.1",
+  "description": "Angular2 Modal (dialog) window bootstrap style.",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shlomiassaf/angular2-modal.git"
+  },
+  "keywords": [
+    "angular",
+    "angular2",
+    "bootstrap",
+    "modal"
+  ],
+  "author": "Shlomi Assaf",
+  "license": "MIT",
+  "main": "dist/commonjs/angular2-modal.js",
+  "typings": "./dist/angular2-modal.d.ts",
+  "homepage": "https://github.com/shlomiassaf/angular2-modal",
+  "bugs": {
+    "url": "https://github.com/shlomiassaf/angular2-modal/issues"
+  },
   "scripts": {
-    "docs": "typedoc  --options typedoc.json  src/angular2-modal/**/*.ts"
+    "prepublish": "tsc --project publish && node make.js"
   },
   "devDependencies": {
+    "angular2": "2.0.0-beta.12",
+    "async": "^1.5.2",
+    "bootstrap": "^3.3.6",
     "css-loader": "^0.23.0",
+    "del": "^2.2.0",
     "exports-loader": "0.6.2",
     "expose-loader": "^0.7.1",
     "file-loader": "^0.8.4",
+    "gulp": "^3.9.0",
+    "gulp-shell": "^0.5.1",
     "imports-loader": "^0.6.4",
     "json-loader": "^0.5.3",
     "raw-loader": "0.5.1",
+    "source-map-loader": "^0.1.5",
     "style-loader": "^0.13.0",
-    "ts-loader": "^0.7.2",
-    "typescript": "^1.7.3",
+    "systemjs-builder": "^0.15.10",
+    "ts-loader": "^0.8.1",
+    "tsconfig-lint": "^0.6.0",
+    "tslint": "^3.5.0 ",
+    "tslint-loader": "^2.1.1",
+    "typescript": "^1.8.7",
     "typings": "^0.3.1",
     "url-loader": "^0.5.6",
     "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.12.1"
-  },
-  "dependencies": {
-    "angular2": "2.0.0-beta.0",
-    "bootstrap": "^3.3.6"
+    "webpack-dev-server": "^1.12.1",
+    "zone.js": "^0.6.6"
   }
 }

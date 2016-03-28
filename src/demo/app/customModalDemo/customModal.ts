@@ -1,15 +1,13 @@
 import {Component, Input} from 'angular2/core';
-import {FORM_DIRECTIVES} from 'angular2/common';
+import {CORE_DIRECTIVES} from 'angular2/common';
 
-import {Modal} from '../../../angular2-modal/providers/Modal';
-import {ModalDialogInstance} from '../../../angular2-modal/models/ModalDialogInstance';
-import {ICustomModal, ICustomModalComponent} from '../../../angular2-modal/models/ICustomModal';
+import {Modal, ModalDialogInstance, ICustomModal, ICustomModalComponent} from 'angular2-modal';
 
 export class AdditionCalculateWindowData {
     constructor(
         public num1: number,
         public num2: number
-    ){}
+    ) {}
 }
 
 /**
@@ -17,6 +15,7 @@ export class AdditionCalculateWindowData {
  */
 @Component({
     selector: 'modal-content',
+    directives: [CORE_DIRECTIVES],
     styles: [`
         .custom-modal-container {
             padding: 15px;
@@ -32,14 +31,16 @@ export class AdditionCalculateWindowData {
             margin-bottom: 40px;
         }
     `],
-    template: `
+    //TODO: [ngClass] here on purpose, no real use, just to show how to workaround ng2 issue #4330.
+    // Remove when solved.
+    /* tslint:disable */ template: `
         <div class="container-fluid custom-modal-container">
             <div class="row custom-modal-header">
                 <div class="col-sm-12">
                     <h1>A Custom modal design</h1>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" [ngClass]="{'myclass' : shouldUseMyClass}">
                 <div class="col-xs-12">
                     <div class="jumbotron">
                         <h1>Do the math to quit:</h1>
@@ -51,7 +52,7 @@ export class AdditionCalculateWindowData {
             </div>
         </div>`
 })
-export class AdditionCalculateWindow implements ICustomModalComponent{
+export class AdditionCalculateWindow implements ICustomModalComponent {
     dialog: ModalDialogInstance;
     context: AdditionCalculateWindowData;
 
@@ -64,7 +65,7 @@ export class AdditionCalculateWindow implements ICustomModalComponent{
     }
 
     onKeyUp(value) {
-        this.wrongAnswer = value != 5;
+        /* tslint:disable */ this.wrongAnswer = value != 5;
         this.dialog.close();
     }
 
