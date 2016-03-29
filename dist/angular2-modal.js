@@ -77,13 +77,15 @@ webpackJsonp([0],{
 	var core_1 = __webpack_require__(5);
 	var _defaultConfig;
 	var ModalConfig = (function () {
-	    function ModalConfig(size, isBlocking, keyboard) {
-	        if (size === void 0) { size = null; }
+	    function ModalConfig(size, isBlocking, keyboard, dialogClass) {
+	        if (size === void 0) { size = undefined; }
 	        if (isBlocking === void 0) { isBlocking = null; }
 	        if (keyboard === void 0) { keyboard = undefined; }
+	        if (dialogClass === void 0) { dialogClass = undefined; }
 	        this.size = size;
 	        this.isBlocking = isBlocking;
 	        this.keyboard = keyboard;
+	        this.dialogClass = dialogClass;
 	    }
 	    ModalConfig.makeValid = function (config, defaultConfig) {
 	        defaultConfig = (defaultConfig) ? defaultConfig : _defaultConfig;
@@ -100,6 +102,9 @@ webpackJsonp([0],{
 	        else if (!Array.isArray(config.keyboard)) {
 	            config.keyboard = defaultConfig.keyboard;
 	        }
+	        if (!config.dialogClass) {
+	            config.dialogClass = defaultConfig.dialogClass;
+	        }
 	        return config;
 	    };
 	    ModalConfig.prototype.supportsKey = function (keyCode) {
@@ -107,12 +112,12 @@ webpackJsonp([0],{
 	    };
 	    ModalConfig = __decorate([
 	        core_1.Injectable(), 
-	        __metadata('design:paramtypes', [String, Boolean, Object])
+	        __metadata('design:paramtypes', [String, Boolean, Object, String])
 	    ], ModalConfig);
 	    return ModalConfig;
 	}());
 	exports.ModalConfig = ModalConfig;
-	_defaultConfig = new ModalConfig('lg', true, [27]);
+	_defaultConfig = new ModalConfig('lg', true, [27], 'modal-dialog');
 
 
 /***/ },
@@ -279,7 +284,7 @@ webpackJsonp([0],{
 	                '(body:keydown)': 'documentKeypress($event)',
 	                '(click)': 'onClick()'
 	            },
-	            template: "<div class=\"modal-dialog\"\n         [class.modal-lg]=\"dialogInstance.config.size == 'lg'\"\n         [class.modal-sm]=\"dialogInstance.config.size == 'sm'\">\n         <div class=\"modal-content\" (click)=\"onContainerClick($event)\" style=\"display: block\">\n            <div style=\"display: none\" #modalDialog></div>\n         </div>\n    </div>"
+	            template: "<div [ngClass]=\"dialogInstance.config.dialogClass\"\n          [class.modal-lg]=\"dialogInstance.config.size == 'lg'\"\n          [class.modal-sm]=\"dialogInstance.config.size == 'sm'\">\n         <div class=\"modal-content\" (click)=\"onContainerClick($event)\" style=\"display: block\">\n            <div style=\"display: none\" #modalDialog></div>\n         </div>\n    </div>"
 	        }), 
 	        __metadata('design:paramtypes', [ModalDialogInstance_1.ModalDialogInstance, Modal_1.Modal])
 	    ], BootstrapModalContainer);
@@ -400,7 +405,7 @@ webpackJsonp([0],{
 	        var idx = this._stack.indexOf(mInstance);
 	        if (idx === -1)
 	            this._stack.push(mInstance);
-	        if (this._stack.length === 1) {
+	        if (dom_adapter_1.DOM && this._stack.length === 1) {
 	            dom_adapter_1.DOM.addClass(dom_adapter_1.DOM.query('body'), 'modal-open');
 	        }
 	    };
@@ -418,7 +423,7 @@ webpackJsonp([0],{
 	        var idx = this._stack.indexOf(mInstance);
 	        if (idx > -1)
 	            this._stack.splice(idx, 1);
-	        if (this._stack.length === 0) {
+	        if (dom_adapter_1.DOM && this._stack.length === 0) {
 	            dom_adapter_1.DOM.removeClass(dom_adapter_1.DOM.query('body'), 'modal-open');
 	        }
 	    };
@@ -483,6 +488,7 @@ webpackJsonp([0],{
 	        FluentAssign_1.setAssignMethod(this, 'size');
 	        FluentAssign_1.setAssignMethod(this, 'isBlocking');
 	        FluentAssign_1.setAssignMethod(this, 'keyboard');
+	        FluentAssign_1.setAssignMethod(this, 'dialogClass');
 	    }
 	    ModalAwarePreset.prototype.open = function (inside) {
 	        var config = this.toJSON();
@@ -496,7 +502,7 @@ webpackJsonp([0],{
 	            return config.modal.openInside(config.component, inside.elementRef, inside.anchorName, config.bindings(config), new ModalConfig_1.ModalConfig(config.size, config.isBlocking, config.keyboard));
 	        }
 	        else {
-	            return config.modal.open(config.component, config.bindings(config), new ModalConfig_1.ModalConfig(config.size, config.isBlocking, config.keyboard));
+	            return config.modal.open(config.component, config.bindings(config), new ModalConfig_1.ModalConfig(config.size, config.isBlocking, config.keyboard, config.dialogClass));
 	        }
 	    };
 	    return ModalAwarePreset;
@@ -916,6 +922,8 @@ webpackJsonp([0],{
 	    function YesNoModal(dialog, modelContentData) {
 	        this.dialog = dialog;
 	        this.context = modelContentData;
+	        console.warn('DEPRECATED: YesNoModal will not be available in next version of ' +
+	            'angular2-modal, please move to the preset API.');
 	    }
 	    YesNoModal.prototype.ok = function ($event) {
 	        $event.stopPropagation();
@@ -971,6 +979,8 @@ webpackJsonp([0],{
 	    function OKOnlyModal(dialog, modelContentData) {
 	        this.dialog = dialog;
 	        this.context = modelContentData;
+	        console.warn('DEPRECATED: OKOnlyModal will not be available in next version of ' +
+	            'angular2-modal, please move to the preset API.');
 	    }
 	    OKOnlyModal.prototype.ok = function () {
 	        this.dialog.close(true);
