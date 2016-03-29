@@ -1,4 +1,7 @@
-# Angular 2: Bootstrap Modal/Dialog window.
+# Angular 2: Modal/Dialog window (with Bootstrap presets).
+
+A fully generic, customizable and fluent modal window implementation for Angular 2 with built in Bootstrap support.  
+Generic means it can support any CSS framework or be a standalone, supply a Component, replace some Tokens and add some presets (optional) and you have an identical fluent API modal for your framework of choice.
 
 >**DISCLAIMER**  
 >
@@ -8,18 +11,32 @@
 
 ## Features:  
 
-  - Easy to use API via Fluent API Presets (alert, propmt, confirm
-  - Easily add your own Presets.
-  - Bootstrap model size configurable.  
+  - Easy to use API via Fluent API Presets (alert, propmt, confirm)
+  - Fully customizable.
+  - Easily add your own Presets.  
   - Select cancel/quit key.  
   - Cascading.  
   - Element blocking.  
   - Blocking / Non blocking modal.  
-  - Modal as a component, replace the content by supplying a custom component.  
+  - Modal as a component, replace the content by supplying a custom component.
+  - Built-in bootstrap implementation.
+  - Bootstrap model size configurable.
   
+
+That's how easy it is:  
+```
+modal.alert()
+    .title('Hello World')
+    .body('In Angular 2')
+    .open();
+```
+
+
 Click for the [Demo](http://shlomiassaf.github.io/angular2-modal/) Make sure to check the [code generator!](http://shlomiassaf.github.io/angular2-modal#/customizeModals)  
 If you're looking for a SystemJS demo, please see [this plunker](http://plnkr.co/edit/FnGdwU)  
 Click for the auto generated [Docs](http://shlomiassaf.github.io/angular2-modal/docs)   
+
+![Code Generator!](/preview.png)
 
 ### Blog post will be up soon! look for it in my [Blog](http://blog.assaf.co/)
 
