@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 let _defaultConfig: ModalConfig;
 
-export type BootstrapModalSize = 'sm' | 'lg';
+export type BootstrapModalSize = 'sm' | 'lg' | 'vd' | 'ep';
 
 // TODO: Move bootstrap specific settings (size) to a derived interface
 export interface IModalConfig {
