@@ -26,12 +26,12 @@ import {Modal, ModalCompileConfig} from '../providers/Modal';
     },
     /* tslint:disable */
     template:
-    `<div [class.vertical-alignment-helper]="dialogInstance.config.size == \'vd\'">
+    `<div [class.vertical-alignment-helper]="dialog.config.size == \'vd\'">
     <div [ngClass]="dialog.config.dialogClass"
-         [class.modal-vd]="dialogInstance.config.size == \'vd\'"
-         [class.modal-ep]="dialogInstance.config.size == \'ep\'"
-         [class.modal-lg]="dialogInstance.config.size == \'lg\'"
-         [class.modal-sm]="dialogInstance.config.size == \'sm\'">
+         [class.modal-vd]="dialog.config.size == \'vd\'"
+         [class.modal-ep]="dialog.config.size == \'ep\'"
+         [class.modal-lg]="dialog.config.size == \'lg\'"
+         [class.modal-sm]="dialog.config.size == \'sm\'">
          <div class="modal-content" 
               role="document"
               style="display: block"
